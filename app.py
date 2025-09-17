@@ -1,1 +1,0 @@
-## @Pareek, kindly use uv for managing dependencies. Contact @Shubham-404 if haning any trouble setting up uv in your system of the project.
