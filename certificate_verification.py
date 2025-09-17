@@ -20,7 +20,7 @@ except Exception:
 try:
 	import fitz  
 except Exception as exc:
-	print("PyMuPDF (fitz) is required. Install with: pip install pymupdf", file=sys.stderr)
+	print("install pydmf ", file=sys.stderr)
 	raise
 
 import cv2 
