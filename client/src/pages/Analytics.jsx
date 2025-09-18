@@ -8,11 +8,11 @@ export default function Analytics() {
 
   const analyticsData = {
     individual: {
-      gpaProgress: [
-        { semester: "Fall 2022", gpa: 7.8 },
-        { semester: "Spring 2023", gpa: 8.2 },
-        { semester: "Fall 2023", gpa: 8.8 },
-        { semester: "Spring 2024", gpa: 8.4 },
+      overallScoreProgress: [
+        { semester: "Fall 2022", overallScore: 7.8 },
+        { semester: "Spring 2023", overallScore: 8.2 },
+        { semester: "Fall 2023", overallScore: 8.8 },
+        { semester: "Spring 2024", overallScore: 8.4 },
       ],
       achievements: {
         total: 24,
@@ -33,14 +33,14 @@ export default function Analytics() {
     },
     institutional: {
       totalStudents: 1250,
-      averageGPA: 7.8,
+      averageOverallScore: 7.8,
       verificationRate: 94,
       portfolioCompletionRate: 78,
       departments: [
-        { name: "Computer Science", students: 320, avgGPA: 8.2, completionRate: 85 },
-        { name: "Engineering", students: 450, avgGPA: 7.9, completionRate: 82 },
-        { name: "Business", students: 280, avgGPA: 7.6, completionRate: 75 },
-        { name: "Liberal Arts", students: 200, avgGPA: 7.4, completionRate: 68 },
+        { name: "Computer Science", students: 320, avgOverallScore: 8.2, completionRate: 85 },
+        { name: "Engineering", students: 450, avgOverallScore: 7.9, completionRate: 82 },
+        { name: "Business", students: 280, avgOverallScore: 7.6, completionRate: 75 },
+        { name: "Liberal Arts", students: 200, avgOverallScore: 7.4, completionRate: 68 },
       ],
       achievementTrends: [
         { month: "Jan", count: 45 },
@@ -51,9 +51,9 @@ export default function Analytics() {
         { month: "Jun", count: 41 },
       ],
       topPerformers: [
-        { name: "Sarah Chen", department: "CS", gpa: 9.2, achievements: 32 },
-        { name: "Alex Johnson", department: "CS", gpa: 8.6, achievements: 24 },
-        { name: "Mike Rodriguez", department: "ENG", gpa: 8.8, achievements: 21 },
+        { name: "Sarah Chen", department: "CS", overallScore: 9.2, achievements: 32 },
+        { name: "Dr. Sharath Chandra N", department: "CS", overallScore: 8.6, achievements: 24 },
+        { name: "Mike Rodriguez", department: "ENG", overallScore: 8.8, achievements: 21 },
       ],
     }
   };
@@ -131,7 +131,7 @@ export default function Analytics() {
       {viewType === "individual" ? (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <StatCard
-            title="Current GPA"
+            title="Current Overall Score"
             value="8.6"
             subtitle="▲ 0.2 from last semester"
             icon={FiTrendingUp}
@@ -174,8 +174,8 @@ export default function Analytics() {
             color="blue"
           />
           <StatCard
-            title="Average GPA"
-            value={analyticsData.institutional.averageGPA}
+            title="Average Overall Score"
+            value={analyticsData.institutional.averageOverallScore}
             subtitle="Institution wide"
             icon={FiTrendingUp}
             trend={3.2}
@@ -224,18 +224,18 @@ export default function Analytics() {
           {/* Student Analytics Tab */}
           {activeTab === "student" && (
             <div className="space-y-8">
-              {/* GPA Progress Chart */}
+              {/* Overall Score Progress Chart */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Academic Progress</h3>
                 <div className="bg-gray-50 rounded-lg p-6">
                   <div className="flex justify-between items-end h-40">
-                    {analyticsData.individual.gpaProgress.map((semester, index) => (
+                    {analyticsData.individual.overallScoreProgress.map((semester, index) => (
                       <div key={index} className="flex flex-col items-center">
                         <div
                           className="bg-blue-500 rounded-t-lg w-16 mb-2 transition-all duration-300"
-                          style={{ height: `${(semester.gpa / 10) * 100}%`, minHeight: '20px' }}
+                          style={{ height: `${(semester.overallScore / 10) * 100}%`, minHeight: '20px' }}
                         ></div>
-                        <div className="text-sm font-medium text-gray-900">{semester.gpa}</div>
+                        <div className="text-sm font-medium text-gray-900">{semester.overallScore}</div>
                         <div className="text-xs text-gray-500 mt-1">{semester.semester}</div>
                       </div>
                     ))}
@@ -303,8 +303,8 @@ export default function Analytics() {
                       </div>
                       <div className="grid grid-cols-3 gap-4">
                         <div className="text-center">
-                          <div className="text-lg font-bold text-blue-600">{dept.avgGPA}</div>
-                          <div className="text-xs text-gray-600">Average GPA</div>
+                          <div className="text-lg font-bold text-blue-600">{dept.avgOverallScore}</div>
+                          <div className="text-xs text-gray-600">Average Overall Score</div>
                         </div>
                         <div className="text-center">
                           <div className="text-lg font-bold text-green-600">{dept.completionRate}%</div>
@@ -344,8 +344,8 @@ export default function Analytics() {
                       </div>
                       <div className="flex items-center gap-6 text-sm">
                         <div className="text-center">
-                          <div className="font-bold text-blue-600">{student.gpa}</div>
-                          <div className="text-gray-600">GPA</div>
+                          <div className="font-bold text-blue-600">{student.overallScore}</div>
+                          <div className="text-gray-600">Overall Score</div>
                         </div>
                         <div className="text-center">
                           <div className="font-bold text-green-600">{student.achievements}</div>

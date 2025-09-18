@@ -11,6 +11,7 @@ import Volunteering from "./pages/Volunteering";
 import Analytics from "./pages/Analytics";
 import Accreditation from "./pages/Accreditation";
 import Settings from "./pages/Settings";
+import Activities from "./pages/Activities";
 import Onboarding from "./pages/Onboarding";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="volunteering" element={<Volunteering />} />
         <Route path="analytics" element={<Analytics />} />
         <Route path="accreditation" element={<Accreditation />} />
+        <Route path="activities" element={<Activities />} />
         <Route path="settings" element={<Settings />} />
       </Route>
       <Route path="/onboarding" element={<Onboarding />} />

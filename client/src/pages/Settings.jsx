@@ -13,7 +13,7 @@ export default function Settings() {
   
   const [privacy, setPrivacy] = useState({
     profileVisibility: "public",
-    showGPA: true,
+    showOverallScore: true,
     showAchievements: true,
     allowSearch: true,
     showContact: false
@@ -80,7 +80,7 @@ export default function Settings() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                     <input
                       type="text"
-                      defaultValue="Alex Johnson"
+                      defaultValue="Dr. Sharath Chandra N"
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500"
                     />
                   </div>
@@ -88,7 +88,7 @@ export default function Settings() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                     <input
                       type="email"
-                      defaultValue="alex.johnson@university.edu"
+                      defaultValue="sharathchandran.nie.ac.in"
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500"
                     />
                   </div>
@@ -96,7 +96,7 @@ export default function Settings() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                     <input
                       type="tel"
-                      defaultValue="+1 (555) 123-4567"
+                      defaultValue="+91 "
                       className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500"
                     />
                   </div>
@@ -288,18 +288,18 @@ export default function Settings() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="font-medium text-gray-900">Show GPA</div>
-                          <div className="text-sm text-gray-600">Display GPA on public profile</div>
+                          <div className="font-medium text-gray-900">Show Overall Score</div>
+                          <div className="text-sm text-gray-600">Display Overall Score on public profile</div>
                         </div>
                         <button
-                          onClick={() => handlePrivacyChange('showGPA', !privacy.showGPA)}
+                          onClick={() => handlePrivacyChange('showOverallScore', !privacy.showOverallScore)}
                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                            privacy.showGPA ? 'bg-blue-600' : 'bg-gray-200'
+                            privacy.showOverallScore ? 'bg-blue-600' : 'bg-gray-200'
                           }`}
                         >
                           <span
                             className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${
-                              privacy.showGPA ? 'translate-x-6' : 'translate-x-1'
+                              privacy.showOverallScore ? 'translate-x-6' : 'translate-x-1'
                             }`}
                           />
                         </button>
