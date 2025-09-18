@@ -8,18 +8,18 @@ export default function Portfolio() {
   const [copySuccess, setCopySuccess] = useState(false);
 
   const portfolioData = {
-    name: "Alex Johnson",
+    name: "Dr. Sharath Chandra N",
     title: "Computer Science Student",
     university: "University of Technology",
     year: "3rd Year",
-    gpa: 8.6,
+    overallScore: 8.6,
     achievements: 24,
     projects: 12,
     certifications: 8,
     portfolioUrl: "https://portfolio.studentplatform.edu/alex-johnson",
     sections: {
       academic: {
-        gpa: 8.6,
+        overallScore: 8.6,
         courses: ["Data Structures", "Machine Learning", "Web Development", "Database Systems"],
         honors: ["Dean's List Fall 2023", "Academic Excellence Award"],
       },
@@ -129,8 +129,8 @@ export default function Portfolio() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl shadow-sm border p-6">
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{portfolioData.gpa}</div>
-            <div className="text-sm text-gray-600">Current GPA</div>
+            <div className="text-3xl font-bold text-blue-600">{portfolioData.overallScore}</div>
+            <div className="text-sm text-gray-600">Current Overall Score</div>
           </div>
         </div>
         <div className="bg-white rounded-xl shadow-sm border p-6">
@@ -215,8 +215,8 @@ export default function Portfolio() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Academic Performance</h3>
                   <div className="bg-blue-50 rounded-lg p-4 mb-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">{portfolioData.sections.academic.gpa}</div>
-                      <div className="text-sm text-gray-600">Cumulative GPA</div>
+                      <div className="text-2xl font-bold text-blue-600">{portfolioData.sections.academic.overallScore}</div>
+                      <div className="text-sm text-gray-600">Cumulative Overall Score</div>
                     </div>
                   </div>
                   <div>

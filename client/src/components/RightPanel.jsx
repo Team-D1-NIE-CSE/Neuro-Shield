@@ -1,13 +1,59 @@
 import React from "react";
-import { FiCalendar, FiClock, FiTrendingUp, FiBell } from "react-icons/fi";
-import ActivityTracker from "./ActivityTracker";
+import { useNavigate } from "react-router-dom";
+import { FiCalendar, FiClock, FiTrendingUp, FiBell, FiCheck, FiPlus, FiEdit, FiEye } from "react-icons/fi";
+import VerificationBadge from "./VerificationBadge";
 
 export default function RightPanel() {
+  const navigate = useNavigate();
+  
   const upcomingDeadlines = [
     { title: "Project Submission", date: "Tomorrow", urgent: true },
     { title: "Midterm Exam", date: "Oct 15", urgent: false },
     { title: "Research Paper", date: "Oct 20", urgent: false },
   ];
+
+  const recentActivities = [
+    {
+      id: 1,
+      title: "AWS Certification Verified",
+      timestamp: "30m ago",
+      status: "verified",
+      icon: FiCheck
+    },
+    {
+      id: 2,
+      title: "Achievement Added",
+      timestamp: "2h ago",
+      status: "pending",
+      icon: FiPlus
+    },
+    {
+      id: 3,
+      title: "Profile Updated",
+      timestamp: "5h ago",
+      status: "completed",
+      icon: FiEdit
+    },
+    {
+      id: 4,
+      title: "Portfolio Viewed",
+      timestamp: "1d ago",
+      status: "info",
+      icon: FiEye
+    }
+  ];
+
+  const getActivityIcon = (activity) => {
+    const Icon = activity.icon;
+    const iconColorMap = {
+      verified: 'text-green-600',
+      pending: 'text-yellow-600',
+      completed: 'text-blue-600',
+      info: 'text-purple-600'
+    };
+    
+    return <Icon className={`w-4 h-4 ${iconColorMap[activity.status] || 'text-gray-600'}`} />;
+  };
 
   return (
     <div className="space-y-6">
@@ -42,6 +88,42 @@ export default function RightPanel() {
             View Leaderboard
           </button>
         </div>
+      </div>
+
+      {/* Recent Activity */}
+      <div className="bg-white rounded-xl shadow-sm p-6">
+        <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <FiBell className="w-5 h-5 text-blue-500" />
+          Recent Activity
+        </h3>
+        <div className="space-y-3">
+          {recentActivities.slice(0, 3).map((activity) => (
+            <div key={activity.id} className="flex items-start gap-3">
+              <div className="flex-shrink-0 mt-0.5">
+                {getActivityIcon(activity)}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900 truncate">
+                      {activity.title}
+                    </p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className="text-xs text-gray-500">{activity.timestamp}</span>
+                      <VerificationBadge status={activity.status} size="xs" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button 
+          onClick={() => navigate('/activities')}
+          className="w-full mt-4 text-sm text-blue-600 hover:text-blue-700 font-medium"
+        >
+          View All Activity
+        </button>
       </div>
 
       {/* Upcoming Deadlines */}

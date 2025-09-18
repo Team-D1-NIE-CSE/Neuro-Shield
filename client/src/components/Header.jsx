@@ -6,7 +6,7 @@ export default function Header() {
       {/* Left section */}
       <div className="flex flex-col space-y-0">
         <div className="flex items-center space-x-2">
-          <p className="text-2xl font-bold text-[#5739ebff]">Hello, Arka</p>
+          <p className="text-2xl font-bold text-[#5739ebff]">Hello, Sir</p>
           <span role="img" aria-hidden>
             👋
           </span>
@@ -24,8 +24,8 @@ export default function Header() {
         </div>
         {/* Avatar */}
         <img
-          src="https://ui-avatars.com/api/?name=Arka+Maulana&background=random"
-          alt="Arka Maulana"
+          src="https://ui-avatars.com/api/?name Sir+Maulana&background=random"
+          alt= "Sir"
           className="w-10 h-10 rounded-full border-2 border-brand-500 shadow-sm"
         />
       </div>

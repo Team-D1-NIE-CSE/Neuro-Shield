@@ -4,14 +4,14 @@ import { FiEdit3, FiCheck, FiX, FiUpload, FiStar, FiMapPin, FiMail, FiPhone, FiC
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: "Alex Johnson",
-    email: "alex.johnson@university.edu",
-    phone: "+1 (555) 123-4567",
+    name: "Dr. Sharath Chandra N",
+    email: "sharathchandran.nie.ac.in",
+    phone: "+91 ",
     studentId: "ST123456",
     department: "Computer Science",
     year: "3rd Year",
-    gpa: 8.6,
-    location: "New York, NY",
+    overallScore: 8.6,
+    location: "Mysuru, Karnataka",
     bio: "Passionate computer science student with interests in AI and machine learning. Active in coding competitions and community service.",
     skills: ["Python", "JavaScript", "Machine Learning", "Data Analysis", "React"],
     verified: true,
@@ -111,12 +111,12 @@ export default function Profile() {
                 </div>
               </div>
 
-              {/* GPA */}
+              {/* Overall Score */}
               <div className="mt-4 p-3 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-center gap-2">
                   <FiStar className="w-5 h-5 text-yellow-500" />
-                  <span className="text-lg font-bold text-blue-600">{profileData.gpa}</span>
-                  <span className="text-sm text-gray-600">GPA</span>
+                  <span className="text-lg font-bold text-blue-600">{profileData.overallScore}</span>
+                  <span className="text-sm text-gray-600">Overall Score</span>
                 </div>
               </div>
             </div>

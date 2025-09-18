@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function GPAWidget({ gpa = 8.6 }) {
-  // Map GPA (10) to percent for circular progress (e.g., 8.6 => 86%)
-  const percent = Math.round((gpa / 10) * 100);
+export default function OverallScoreWidget({ overallScore = 8.6 }) {
+  // Map Overall Score (10) to percent for circular progress (e.g., 8.6 => 86%)
+  const percent = Math.round((overallScore / 10) * 100);
 
   return (
     <div className="rounded-lg p-4 bg-gray-50 shadow-sm max-w-[220px]">
       <div className="flex flex-col items-center space-y-2">
-        {/* Circle with centered GPA */}
+        {/* Circle with centered Overall Score */}
         <div className="relative w-24 h-24">
           <svg className="w-full h-full -rotate-90">
             {/* Track */}
@@ -34,13 +34,13 @@ export default function GPAWidget({ gpa = 8.6 }) {
               strokeLinecap="round"
             />
           </svg>
-          {/* Centered GPA text */}
+          {/* Centered Overall Score text */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-lg font-bold text-gray-800">{gpa}</span>
+            <span className="text-lg font-bold text-gray-800">{overallScore}</span>
           </div>
         </div>
 
-        <p className="text-sm text-gray-600">Current GPA</p>
+        <p className="text-sm text-gray-600">Current Overall Score</p>
       </div>
     </div>
   );

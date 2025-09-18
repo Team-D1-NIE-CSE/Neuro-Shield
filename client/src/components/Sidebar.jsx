@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FiGrid, FiBook, FiAward, FiUsers, FiSettings, FiUser, FiFolder, FiBarChart, FiFileText } from "react-icons/fi";
+import { FiGrid, FiBook, FiAward, FiUsers, FiSettings, FiUser, FiFolder, FiBarChart, FiFileText, FiBell } from "react-icons/fi";
 import { FaTrophy } from "react-icons/fa";
 
 export default function Sidebar() {
@@ -14,6 +14,7 @@ export default function Sidebar() {
     { icon: FiUsers, label: "Volunteering", path: "/volunteering" },
     { icon: FiBarChart, label: "Analytics", path: "/analytics" },
     { icon: FiFileText, label: "Accreditation", path: "/accreditation" },
+    { icon: FiBell, label: "Activities", path: "/activities" },
     { icon: FiSettings, label: "Settings", path: "/settings" },
   ];
 

@@ -6,7 +6,7 @@ export default function Academics() {
   const [showAddForm, setShowAddForm] = useState(false);
 
   const academicData = {
-    currentGPA: 8.6,
+    currentOverallScore: 8.6,
     creditHours: 120,
     expectedGraduation: "May 2025",
     classRank: "15/200",
@@ -104,8 +104,8 @@ export default function Academics() {
         <div className="bg-white rounded-xl shadow-sm border p-6">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-2xl font-bold text-blue-600">{academicData.currentGPA}</div>
-              <div className="text-sm text-gray-600">Current GPA</div>
+              <div className="text-2xl font-bold text-blue-600">{academicData.currentOverallScore}</div>
+              <div className="text-sm text-gray-600">Current Overall Score</div>
             </div>
             <FiStar className="w-8 h-8 text-yellow-500" />
           </div>
@@ -165,7 +165,7 @@ export default function Academics() {
             <div className="space-y-6">
               {/* GPA Trend */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">GPA Trend</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Overall Score Trend</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {academicData.semesters.map((semester) => (
                     <div key={semester.id} className="border border-gray-200 rounded-lg p-4">
@@ -185,7 +185,7 @@ export default function Academics() {
                         <div className={`text-2xl font-bold ${semester.gpa ? 'text-blue-600' : 'text-gray-400'}`}>
                           {semester.gpa || 'TBD'}
                         </div>
-                        <div className="text-sm text-gray-600">Semester GPA</div>
+                        <div className="text-sm text-gray-600">Semester Score</div>
                       </div>
                     </div>
                   ))}
@@ -246,7 +246,7 @@ export default function Academics() {
                       <div className="flex items-center gap-4">
                         {semester.gpa && (
                           <span className="text-sm text-gray-600">
-                            Semester GPA: <span className="font-semibold text-blue-600">{semester.gpa}</span>
+                            Semester Score: <span className="font-semibold text-blue-600">{semester.gpa}</span>
                           </span>
                         )}
                         <span className={`px-3 py-1 rounded-full text-xs ${

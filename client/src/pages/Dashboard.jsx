@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GPAWidget from "../components/GPAWidget";
+import OverallScoreWidget from "../components/OverallScoreWidget";
 import AchievementForm from "../components/AchievementForm";
 import AchievementCard from "../components/AchievementCard";
 import MOCK from "../data/mockAchievements";
@@ -17,11 +17,11 @@ export default function Dashboard() {
       {/* Header row */}
       <div className="flex justify-between items-start">
         <div className="flex items-center space-x-4">
-          <GPAWidget gpa={8.6} />
+          <OverallScoreWidget overallScore={8.6} />
           <div>
             <p className="font-bold text-[#242424]">Overview</p>
             <p className="text-sm text-gray-500">
-              GPA, achievements and quick actions
+              Overall Score, achievements and quick actions
             </p>
           </div>
         </div>
