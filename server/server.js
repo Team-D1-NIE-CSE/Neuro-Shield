@@ -18,15 +18,15 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-// const indexRouter = require('./routes/index-router')
-// const userRouter = require('./routes/user-router')
+const indexRouter = require('./routes/index-router')
+const userRouter = require('./routes/user-router')
+const testRouter = require('./routes/test-router')
+const verifyRouter = require('./routes/verify-router')
 
-app.get('/', (req, res)=>{
-    res.send("Hey babe.")
-})
-app.get('/test1', (req, res)=>{
-    res.send("Hey babe.")
-})
+app.use('/', indexRouter)
+app.use('/test1', testRouter)
+app.use('/user', userRouter)
+app.use('/verify', verifyRouter)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
