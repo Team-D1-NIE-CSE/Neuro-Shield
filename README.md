@@ -1,2 +1,2 @@
-# Utsave-nie
-A Smart College Engagement platform.
+#360° Student Achievement Tracker
+A unified system offering a complete view of student growth, streamlining portfolio creation, mentorship, and institutional reporting.
