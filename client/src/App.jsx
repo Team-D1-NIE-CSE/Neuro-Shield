@@ -1,25 +1,35 @@
 import React from "react";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Layout from "./Layout";
 import Dashboard from "./pages/Dashboard";
-import RightPanel from "./components/RightPanel";
+import Profile from "./pages/Profile";
+import Portfolio from "./pages/Portfolio";
+import Academics from "./pages/Academics";
+import Competitions from "./pages/Competitions";
+import Certifications from "./pages/Certifications";
+import Volunteering from "./pages/Volunteering";
+import Analytics from "./pages/Analytics";
+import Accreditation from "./pages/Accreditation";
+import Settings from "./pages/Settings";
+import Onboarding from "./pages/Onboarding";
 
 export default function App() {
   return (
-    <div className="min-h-screen p-6 bg-gray-100">
-      <div className="grid grid-cols-[80px_1fr_360px] gap-6 items-start">
-        {/* Sidebar */}
-        <Sidebar />
-
-        {/* Main content */}
-        <div className="bg-white rounded-xl shadow-sm p-6 min-h-[80vh]">
-          <Header />
-          <Dashboard />
-        </div>
-
-        {/* Right Panel */}
-        <RightPanel />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to="/dashboard" replace />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="academics" element={<Academics />} />
+        <Route path="competitions" element={<Competitions />} />
+        <Route path="certifications" element={<Certifications />} />
+        <Route path="volunteering" element={<Volunteering />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="accreditation" element={<Accreditation />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+      <Route path="/onboarding" element={<Onboarding />} />
+    </Routes>
   );
 }
