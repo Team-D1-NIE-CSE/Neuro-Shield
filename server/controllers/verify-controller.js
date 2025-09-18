@@ -1,3 +1,4 @@
-module.exports.verifyController = function(req, res){
-    res.send("verifyController.")
+module.exports.verifyController = function (req, res) {
+    const  response = req.body;
+    res.send(response)
 }
