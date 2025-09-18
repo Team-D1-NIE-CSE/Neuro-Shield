@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npx nodemon",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "install:client": "cd client && npm i",
+    "install:server": "cd server && npm i",
+    "install": "concurrently \"npm run install:client\" \"npm run install:server\""
   },
   "repository": {
     "type": "git",
