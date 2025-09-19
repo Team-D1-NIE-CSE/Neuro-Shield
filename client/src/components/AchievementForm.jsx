@@ -115,7 +115,22 @@ export default function AchievementForm({ isOpen, onClose, onAdd, type = 'genera
     setIsLoading(true);
     setMessage(null);
 
-    // Prepare form data including file
+    // Create achievement object and add to frontend immediately (optimistic UI for prototype)
+    const newAch = {
+      id: Date.now().toString(),
+      ...form,
+      status: "Pending",
+      certificate: file
+        ? { name: file.name, url: URL.createObjectURL(file) }
+        : null,
+    };
+
+    // Add to frontend directly
+    if (onAdd) {
+      onAdd(newAch);
+    }
+
+    // Prepare form data for backend verification (prototype simulation)
     const formData = new FormData();
     formData.append('data', JSON.stringify(form));
     if (file) {
@@ -125,26 +140,18 @@ export default function AchievementForm({ isOpen, onClose, onAdd, type = 'genera
     try {
       const response = await fetch('http://localhost:3000/verify', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formData, // Use FormData directly, no Content-Type header
       });
 
       const result = await response.json();
-      console.log(result)
+      console.log(result);
 
       if (response.ok) {
-        // Success - verified or pending
+        // Backend verification successful - update message based on verification status
         setMessage({
-          text: result.message || "Achievement submitted successfully!",
+          text: result.message || "Achievement submitted and verified successfully!",
           type: result.verified ? "success" : "pending"
         });
-
-        // Call parent onAdd callback
-        if (onAdd && result.data) {
-          onAdd(result.data);
-        }
 
         // Close form after successful submission
         setTimeout(() => {
@@ -153,19 +160,32 @@ export default function AchievementForm({ isOpen, onClose, onAdd, type = 'genera
         }, 1500);
 
       } else {
-        // Server error
+        // Server error - but achievement is already added (optimistic)
         setMessage({
-          text: result.message || "Submission failed. Please try again.",
-          type: "error"
+          text: result.message || "Verification failed, but achievement added as pending.",
+          type: "pending"
         });
+
+        // Close form anyway for prototype
+        setTimeout(() => {
+          onClose();
+          setIsSubmitted(true);
+        }, 1500);
       }
 
     } catch (error) {
       console.error('Submission error:', error.message);
+      // Network error - but achievement is already added
       setMessage({
-        text: "Network error. Please check your connection and try again.",
-        type: "error"
+        text: "Network error during verification, but achievement added as pending.",
+        type: "pending"
       });
+
+      // Close form for prototype
+      setTimeout(() => {
+        onClose();
+        setIsSubmitted(true);
+      }, 1500);
     } finally {
       setIsLoading(false);
     }
@@ -220,7 +240,7 @@ export default function AchievementForm({ isOpen, onClose, onAdd, type = 'genera
                 </h2>
                 <p className="text-gray-600">
                   {isSubmitted
-                    ? "Your achievement has been submitted for review"
+                    ? "Your achievement has been added and submitted for review"
                     : "Submit your achievement for verification"
                   }
                 </p>
@@ -240,8 +260,8 @@ export default function AchievementForm({ isOpen, onClose, onAdd, type = 'genera
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FiCheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Submission Successful!</h3>
-                <p className="text-gray-600">Your achievement will be reviewed shortly.</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Achievement Added!</h3>
+                <p className="text-gray-600">Your achievement is now in your list (Pending status).</p>
               </div>
             )}
 
@@ -250,7 +270,7 @@ export default function AchievementForm({ isOpen, onClose, onAdd, type = 'genera
               <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50">
                 <div className="text-center">
                   <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
-                  <p className="text-gray-600 font-medium">Verifying your achievement...</p>
+                  <p className="text-gray-600 font-medium">Adding your achievement...</p>
                   <p className="text-sm text-gray-500 mt-1">Please wait</p>
                 </div>
               </div>
