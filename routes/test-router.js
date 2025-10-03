@@ -4,6 +4,6 @@ const testRouter = express.Router()
 
 const { testController } = require('../controllers/test-controller')
 
-testRouter.get('/', testController)
+testRouter.post('/', testController)
 
 module.exports = testRouter
